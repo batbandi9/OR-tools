@@ -1,0 +1,35 @@
+# config/model_config.yaml
+
+# File paths (relative to project root)
+data:
+  electricity_price: "data/raw/strompreis.csv"
+  gas_price: "data/raw/gaspreis.csv"
+  heat_demand: "data/raw/waerme.xlsx"
+  co2_price: 55.0  # EUR/ton (Static value or path to file)
+
+# Simulation settings
+settings:
+  year: 2026
+  month: [4]  # April and May (Shoulder months as requested)
+  solver: "SCIP" # Options: SCIP, GLOP, CBC
+
+# Economic parameters
+economics:
+  co2_intensity_gas: 0.20088 # tCO2/MWh_gas
+  subsidy_amount: 78.10      # EUR/MWh_el
+  subsidy_limit_hours: 3500  # Full load hours limit
+
+# Technical parameters for the CHP (VTW example)
+chp:
+  name: "VTW_KWK1"
+  p_gas_max: 2.556 # MW Input
+  p_gas_min: 1.405 # 0.55 * 2.556
+  eta_el: 0.372    # Electrical efficiency
+  eta_th: 0.458    # Thermal efficiency
+  marginal_cost: 10.1 # EUR/MWh_el (Maintenance etc.)
+
+# Backup Boiler (Kessel) parameters
+boiler:
+  p_gas_max: 19.13
+  eta_th: 0.836
+  marginal_cost: 38.0 # EUR/MWh_th

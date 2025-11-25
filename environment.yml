@@ -1,0 +1,14 @@
+name: ORtools
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - matplotlib
+  - jupyter
+  - scipy
+  - pyomo
+  - ortools
+  - pyscipopt
+  - pyyaml
