@@ -10,14 +10,12 @@ data:
 # Simulation settings
 settings:
   year: 2026
-  month: [4]  # April and May (Shoulder months as requested)
+  month: [4]  # April and May 5
   solver: "SCIP" # Options: SCIP, GLOP, CBC
 
 # Economic parameters
 economics:
   co2_intensity_gas: 0.20088 # tCO2/MWh_gas
-  subsidy_amount: 78.10      # EUR/MWh_el
-  subsidy_limit_hours: 3500  # Full load hours limit
 
 # Technical parameters for the CHP (VTW example)
 chp:
@@ -33,3 +31,6 @@ boiler:
   p_gas_max: 19.13
   eta_th: 0.836
   marginal_cost: 38.0 # EUR/MWh_th
+
+
+

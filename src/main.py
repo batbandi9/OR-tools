@@ -56,9 +56,12 @@ def main():
             
             # Add the original demand to the results for comparison
             results["heat_demand"] = df["demand_th"]
+            results["electricity_price"] = df["price_el"]
+            results["gas_price"] = df["price_gas"]
+            results_rounded = results.round(3)
             
-            output_path = "results/chp_boiler_shoulder_results.csv"
-            results.to_csv(output_path)
+            output_path = "results/chp_shoulder_results.csv"
+            results_rounded.to_csv(output_path)
             
             print(f"\nSUCCESS! Results saved to: {output_path}")
             print(results[["chp_heat_out", "heat_demand"]].head(10))

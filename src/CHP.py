@@ -47,12 +47,8 @@ class CHPOptimizer:
             self.solver.Add(self.v_chp_gas[t] >= self.c_chp["p_gas_min"] * self.v_chp_status[t])
 
             # C2: Heat Balance (CHP Only)
-            # WARNING: If Demand > CHP_Max, this will be INFEASIBLE.
             q_chp = self.v_chp_gas[t] * self.c_chp["eta_th"]
             
-            # I changed '==' to '<=' to prevent crashing if demand is too high
-            # This means: "CHP tries its best, but cannot exceed demand"
-            # If you strictly need '==', and demand is high, the solver will fail.
             self.solver.Add(q_chp == demand[t]) 
 
             # Objective: Profit
@@ -75,7 +71,7 @@ class CHPOptimizer:
             print(f"Optimal. Profit: {self.solver.Objective().Value():,.2f} EUR")
             self._extract_results()
         else:
-            print("No optimal solution found. (Likely Demand > CHP Capacity)")
+            print("No optimal solution found.")
 
     def _extract_results(self):
         # Only extract CHP variables
