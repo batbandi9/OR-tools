@@ -10,7 +10,9 @@ data:
 # Simulation settings
 settings:
   year: 2026
-  month: [4]  # April and May 5
+  month: [4]  # April
+  #day: 1      # Day 1
+  #hour: 8     # Hour 8 (0-23)
   solver: "SCIP" # Options: SCIP, GLOP, CBC
 
 # Economic parameters
@@ -20,7 +22,7 @@ economics:
 # Technical parameters for the CHP (VTW example)
 chp:
   name: "VTW_KWK1"
-  p_gas_max: 2.556 # MW Input
+  p_gas_max: 2.556 # MW Input, changed because of the infeasibilty issues
   p_gas_min: 1.405 # 0.55 * 2.556
   eta_el: 0.372    # Electrical efficiency
   eta_th: 0.458    # Thermal efficiency

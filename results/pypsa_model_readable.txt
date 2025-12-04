@@ -1,0 +1,380 @@
+PyPSA MODEL - Human Readable Format
+
+OBJECTIVE FUNCTION
+Objective:
+----------
+Objective:
+----------
+LinearExpression: +44.63 Generator-p[2026-04-01 00:00:00, Gas_Supply] + 44.63 Generator-p[2026-04-01 01:00:00, Gas_Supply] + 44.63 Generator-p[2026-04-01 02:00:00, Gas_Supply] ... +38 Link-p[2026-04-30 21:00:00, Boiler] + 38 Link-p[2026-04-30 22:00:00, Boiler] + 38 Link-p[2026-04-30 23:00:00, Boiler]
+Sense: min
+Value: None
+
+
+
+======================================================================
+SUMMARY
+======================================================================
+
+Linopy MILP model
+=================
+
+Variables:
+----------
+ * Generator-p_nom (name)
+ * Generator-p (snapshot, name)
+ * Link-p (snapshot, name)
+ * Link-status (snapshot, name)
+ * Link-start_up (snapshot, name)
+ * Link-shut_down (snapshot, name)
+
+Constraints:
+------------
+ * Generator-ext-p_nom-lower (name, _term)
+ * Generator-ext-p-lower (snapshot, name, _term)
+ * Generator-ext-p-upper (snapshot, name, _term)
+ * Link-fix-p-lower (snapshot, name, _term)
+ * Link-fix-p-upper (snapshot, name, _term)
+ * Link-com-p-lower (snapshot, name, _term)
+ * Link-com-p-upper (snapshot, name, _term)
+ * Link-com-transition-start-up (snapshot, name, _term)
+ * Link-com-transition-shut-down (snapshot, name, _term)
+ * Link-com-status-min_up_time_must_stay_up (snapshot, name, _term)
+ * Bus-nodal_balance (name, snapshot, _term)
+ * CHP_gas_geq_Boiler_gas (snapshot, _term)
+
+
+Unique Component Names Found:
+-----------------------------
+1. Boiler
+2. CHP
+3. Gas_Supply
+4. Market_Sale
+5. electricity
+6. gas
+7. heat
+VARIABLES
+
+--- Generator-p_nom [CONTINUOUS] ---
+Variable (name: 2)
+------------------
+[Gas_Supply]: Generator-p_nom[Gas_Supply] ∈ [-inf, inf]
+[Market_Sale]: Generator-p_nom[Market_Sale] ∈ [-inf, inf]
+
+--- Generator-p [CONTINUOUS] ---
+Variable (snapshot: 720, name: 2)
+---------------------------------
+[2026-04-01 00:00:00, Gas_Supply]: Generator-p[2026-04-01 00:00:00, Gas_Supply] ∈ [-inf, inf]
+[2026-04-01 00:00:00, Market_Sale]: Generator-p[2026-04-01 00:00:00, Market_Sale] ∈ [-inf, inf]
+[2026-04-01 01:00:00, Gas_Supply]: Generator-p[2026-04-01 01:00:00, Gas_Supply] ∈ [-inf, inf]
+[2026-04-01 01:00:00, Market_Sale]: Generator-p[2026-04-01 01:00:00, Market_Sale] ∈ [-inf, inf]
+[2026-04-01 02:00:00, Gas_Supply]: Generator-p[2026-04-01 02:00:00, Gas_Supply] ∈ [-inf, inf]
+[2026-04-01 02:00:00, Market_Sale]: Generator-p[2026-04-01 02:00:00, Market_Sale] ∈ [-inf, inf]
+[2026-04-01 03:00:00, Gas_Supply]: Generator-p[2026-04-01 03:00:00, Gas_Supply] ∈ [-inf, inf]
+		...
+[2026-04-30 20:00:00, Market_Sale]: Generator-p[2026-04-30 20:00:00, Market_Sale] ∈ [-inf, inf]
+[2026-04-30 21:00:00, Gas_Supply]: Generator-p[2026-04-30 21:00:00, Gas_Supply] ∈ [-inf, inf]
+[2026-04-30 21:00:00, Market_Sale]: Generator-p[2026-04-30 21:00:00, Market_Sale] ∈ [-inf, inf]
+[2026-04-30 22:00:00, Gas_Supply]: Generator-p[2026-04-30 22:00:00, Gas_Supply] ∈ [-inf, inf]
+[2026-04-30 22:00:00, Market_Sale]: Generator-p[2026-04-30 22:00:00, Market_Sale] ∈ [-inf, inf]
+[2026-04-30 23:00:00, Gas_Supply]: Generator-p[2026-04-30 23:00:00, Gas_Supply] ∈ [-inf, inf]
+[2026-04-30 23:00:00, Market_Sale]: Generator-p[2026-04-30 23:00:00, Market_Sale] ∈ [-inf, inf]
+
+--- Link-p [CONTINUOUS] ---
+Variable (snapshot: 720, name: 2)
+---------------------------------
+[2026-04-01 00:00:00, CHP]: Link-p[2026-04-01 00:00:00, CHP] ∈ [-inf, inf]
+[2026-04-01 00:00:00, Boiler]: Link-p[2026-04-01 00:00:00, Boiler] ∈ [-inf, inf]
+[2026-04-01 01:00:00, CHP]: Link-p[2026-04-01 01:00:00, CHP] ∈ [-inf, inf]
+[2026-04-01 01:00:00, Boiler]: Link-p[2026-04-01 01:00:00, Boiler] ∈ [-inf, inf]
+[2026-04-01 02:00:00, CHP]: Link-p[2026-04-01 02:00:00, CHP] ∈ [-inf, inf]
+[2026-04-01 02:00:00, Boiler]: Link-p[2026-04-01 02:00:00, Boiler] ∈ [-inf, inf]
+[2026-04-01 03:00:00, CHP]: Link-p[2026-04-01 03:00:00, CHP] ∈ [-inf, inf]
+		...
+[2026-04-30 20:00:00, Boiler]: Link-p[2026-04-30 20:00:00, Boiler] ∈ [-inf, inf]
+[2026-04-30 21:00:00, CHP]: Link-p[2026-04-30 21:00:00, CHP] ∈ [-inf, inf]
+[2026-04-30 21:00:00, Boiler]: Link-p[2026-04-30 21:00:00, Boiler] ∈ [-inf, inf]
+[2026-04-30 22:00:00, CHP]: Link-p[2026-04-30 22:00:00, CHP] ∈ [-inf, inf]
+[2026-04-30 22:00:00, Boiler]: Link-p[2026-04-30 22:00:00, Boiler] ∈ [-inf, inf]
+[2026-04-30 23:00:00, CHP]: Link-p[2026-04-30 23:00:00, CHP] ∈ [-inf, inf]
+[2026-04-30 23:00:00, Boiler]: Link-p[2026-04-30 23:00:00, Boiler] ∈ [-inf, inf]
+
+--- Link-status [BINARY] ---
+Variable (snapshot: 720, name: 1)
+---------------------------------
+[2026-04-01 00:00:00, CHP]: Link-status[2026-04-01 00:00:00, CHP] ∈ {0, 1}
+[2026-04-01 01:00:00, CHP]: Link-status[2026-04-01 01:00:00, CHP] ∈ {0, 1}
+[2026-04-01 02:00:00, CHP]: Link-status[2026-04-01 02:00:00, CHP] ∈ {0, 1}
+[2026-04-01 03:00:00, CHP]: Link-status[2026-04-01 03:00:00, CHP] ∈ {0, 1}
+[2026-04-01 04:00:00, CHP]: Link-status[2026-04-01 04:00:00, CHP] ∈ {0, 1}
+[2026-04-01 05:00:00, CHP]: Link-status[2026-04-01 05:00:00, CHP] ∈ {0, 1}
+[2026-04-01 06:00:00, CHP]: Link-status[2026-04-01 06:00:00, CHP] ∈ {0, 1}
+		...
+[2026-04-30 17:00:00, CHP]: Link-status[2026-04-30 17:00:00, CHP] ∈ {0, 1}
+[2026-04-30 18:00:00, CHP]: Link-status[2026-04-30 18:00:00, CHP] ∈ {0, 1}
+[2026-04-30 19:00:00, CHP]: Link-status[2026-04-30 19:00:00, CHP] ∈ {0, 1}
+[2026-04-30 20:00:00, CHP]: Link-status[2026-04-30 20:00:00, CHP] ∈ {0, 1}
+[2026-04-30 21:00:00, CHP]: Link-status[2026-04-30 21:00:00, CHP] ∈ {0, 1}
+[2026-04-30 22:00:00, CHP]: Link-status[2026-04-30 22:00:00, CHP] ∈ {0, 1}
+[2026-04-30 23:00:00, CHP]: Link-status[2026-04-30 23:00:00, CHP] ∈ {0, 1}
+
+--- Link-start_up [BINARY] ---
+Variable (snapshot: 720, name: 1)
+---------------------------------
+[2026-04-01 00:00:00, CHP]: Link-start_up[2026-04-01 00:00:00, CHP] ∈ {0, 1}
+[2026-04-01 01:00:00, CHP]: Link-start_up[2026-04-01 01:00:00, CHP] ∈ {0, 1}
+[2026-04-01 02:00:00, CHP]: Link-start_up[2026-04-01 02:00:00, CHP] ∈ {0, 1}
+[2026-04-01 03:00:00, CHP]: Link-start_up[2026-04-01 03:00:00, CHP] ∈ {0, 1}
+[2026-04-01 04:00:00, CHP]: Link-start_up[2026-04-01 04:00:00, CHP] ∈ {0, 1}
+[2026-04-01 05:00:00, CHP]: Link-start_up[2026-04-01 05:00:00, CHP] ∈ {0, 1}
+[2026-04-01 06:00:00, CHP]: Link-start_up[2026-04-01 06:00:00, CHP] ∈ {0, 1}
+		...
+[2026-04-30 17:00:00, CHP]: Link-start_up[2026-04-30 17:00:00, CHP] ∈ {0, 1}
+[2026-04-30 18:00:00, CHP]: Link-start_up[2026-04-30 18:00:00, CHP] ∈ {0, 1}
+[2026-04-30 19:00:00, CHP]: Link-start_up[2026-04-30 19:00:00, CHP] ∈ {0, 1}
+[2026-04-30 20:00:00, CHP]: Link-start_up[2026-04-30 20:00:00, CHP] ∈ {0, 1}
+[2026-04-30 21:00:00, CHP]: Link-start_up[2026-04-30 21:00:00, CHP] ∈ {0, 1}
+[2026-04-30 22:00:00, CHP]: Link-start_up[2026-04-30 22:00:00, CHP] ∈ {0, 1}
+[2026-04-30 23:00:00, CHP]: Link-start_up[2026-04-30 23:00:00, CHP] ∈ {0, 1}
+
+--- Link-shut_down [BINARY] ---
+Variable (snapshot: 720, name: 1)
+---------------------------------
+[2026-04-01 00:00:00, CHP]: Link-shut_down[2026-04-01 00:00:00, CHP] ∈ {0, 1}
+[2026-04-01 01:00:00, CHP]: Link-shut_down[2026-04-01 01:00:00, CHP] ∈ {0, 1}
+[2026-04-01 02:00:00, CHP]: Link-shut_down[2026-04-01 02:00:00, CHP] ∈ {0, 1}
+[2026-04-01 03:00:00, CHP]: Link-shut_down[2026-04-01 03:00:00, CHP] ∈ {0, 1}
+[2026-04-01 04:00:00, CHP]: Link-shut_down[2026-04-01 04:00:00, CHP] ∈ {0, 1}
+[2026-04-01 05:00:00, CHP]: Link-shut_down[2026-04-01 05:00:00, CHP] ∈ {0, 1}
+[2026-04-01 06:00:00, CHP]: Link-shut_down[2026-04-01 06:00:00, CHP] ∈ {0, 1}
+		...
+[2026-04-30 17:00:00, CHP]: Link-shut_down[2026-04-30 17:00:00, CHP] ∈ {0, 1}
+[2026-04-30 18:00:00, CHP]: Link-shut_down[2026-04-30 18:00:00, CHP] ∈ {0, 1}
+[2026-04-30 19:00:00, CHP]: Link-shut_down[2026-04-30 19:00:00, CHP] ∈ {0, 1}
+[2026-04-30 20:00:00, CHP]: Link-shut_down[2026-04-30 20:00:00, CHP] ∈ {0, 1}
+[2026-04-30 21:00:00, CHP]: Link-shut_down[2026-04-30 21:00:00, CHP] ∈ {0, 1}
+[2026-04-30 22:00:00, CHP]: Link-shut_down[2026-04-30 22:00:00, CHP] ∈ {0, 1}
+[2026-04-30 23:00:00, CHP]: Link-shut_down[2026-04-30 23:00:00, CHP] ∈ {0, 1}
+
+BINARY VARIABLES (Summary)
+  - Link-status: shape=(720, 1)
+  - Link-start_up: shape=(720, 1)
+  - Link-shut_down: shape=(720, 1)
+
+CONSTRAINTS
+
+--- Generator-ext-p_nom-lower ---
+Constraint `Generator-ext-p_nom-lower` [name: 2]:
+-------------------------------------------------
+[Gas_Supply]: +1 Generator-p_nom[Gas_Supply]   ≥ -0.0
+[Market_Sale]: +1 Generator-p_nom[Market_Sale] ≥ -0.0
+
+--- Generator-ext-p-lower ---
+Constraint `Generator-ext-p-lower` [snapshot: 720, name: 2]:
+------------------------------------------------------------
+[2026-04-01 00:00:00, Gas_Supply]: +1 Generator-p[2026-04-01 00:00:00, Gas_Supply] - 0 Generator-p_nom[Gas_Supply]    ≥ -0.0
+[2026-04-01 00:00:00, Market_Sale]: +1 Generator-p[2026-04-01 00:00:00, Market_Sale] - 0 Generator-p_nom[Market_Sale] ≥ -0.0
+[2026-04-01 01:00:00, Gas_Supply]: +1 Generator-p[2026-04-01 01:00:00, Gas_Supply] - 0 Generator-p_nom[Gas_Supply]    ≥ -0.0
+[2026-04-01 01:00:00, Market_Sale]: +1 Generator-p[2026-04-01 01:00:00, Market_Sale] - 0 Generator-p_nom[Market_Sale] ≥ -0.0
+[2026-04-01 02:00:00, Gas_Supply]: +1 Generator-p[2026-04-01 02:00:00, Gas_Supply] - 0 Generator-p_nom[Gas_Supply]    ≥ -0.0
+[2026-04-01 02:00:00, Market_Sale]: +1 Generator-p[2026-04-01 02:00:00, Market_Sale] - 0 Generator-p_nom[Market_Sale] ≥ -0.0
+[2026-04-01 03:00:00, Gas_Supply]: +1 Generator-p[2026-04-01 03:00:00, Gas_Supply] - 0 Generator-p_nom[Gas_Supply]    ≥ -0.0
+		...
+[2026-04-30 20:00:00, Market_Sale]: +1 Generator-p[2026-04-30 20:00:00, Market_Sale] - 0 Generator-p_nom[Market_Sale] ≥ -0.0
+[2026-04-30 21:00:00, Gas_Supply]: +1 Generator-p[2026-04-30 21:00:00, Gas_Supply] - 0 Generator-p_nom[Gas_Supply]    ≥ -0.0
+[2026-04-30 21:00:00, Market_Sale]: +1 Generator-p[2026-04-30 21:00:00, Market_Sale] - 0 Generator-p_nom[Market_Sale] ≥ -0.0
+[2026-04-30 22:00:00, Gas_Supply]: +1 Generator-p[2026-04-30 22:00:00, Gas_Supply] - 0 Generator-p_nom[Gas_Supply]    ≥ -0.0
+[2026-04-30 22:00:00, Market_Sale]: +1 Generator-p[2026-04-30 22:00:00, Market_Sale] - 0 Generator-p_nom[Market_Sale] ≥ -0.0
+[2026-04-30 23:00:00, Gas_Supply]: +1 Generator-p[2026-04-30 23:00:00, Gas_Supply] - 0 Generator-p_nom[Gas_Supply]    ≥ -0.0
+[2026-04-30 23:00:00, Market_Sale]: +1 Generator-p[2026-04-30 23:00:00, Market_Sale] - 0 Generator-p_nom[Market_Sale] ≥ -0.0
+
+--- Generator-ext-p-upper ---
+Constraint `Generator-ext-p-upper` [snapshot: 720, name: 2]:
+------------------------------------------------------------
+[2026-04-01 00:00:00, Gas_Supply]: +1 Generator-p[2026-04-01 00:00:00, Gas_Supply] - 1 Generator-p_nom[Gas_Supply]    ≤ -0.0
+[2026-04-01 00:00:00, Market_Sale]: +1 Generator-p[2026-04-01 00:00:00, Market_Sale] - 1 Generator-p_nom[Market_Sale] ≤ -0.0
+[2026-04-01 01:00:00, Gas_Supply]: +1 Generator-p[2026-04-01 01:00:00, Gas_Supply] - 1 Generator-p_nom[Gas_Supply]    ≤ -0.0
+[2026-04-01 01:00:00, Market_Sale]: +1 Generator-p[2026-04-01 01:00:00, Market_Sale] - 1 Generator-p_nom[Market_Sale] ≤ -0.0
+[2026-04-01 02:00:00, Gas_Supply]: +1 Generator-p[2026-04-01 02:00:00, Gas_Supply] - 1 Generator-p_nom[Gas_Supply]    ≤ -0.0
+[2026-04-01 02:00:00, Market_Sale]: +1 Generator-p[2026-04-01 02:00:00, Market_Sale] - 1 Generator-p_nom[Market_Sale] ≤ -0.0
+[2026-04-01 03:00:00, Gas_Supply]: +1 Generator-p[2026-04-01 03:00:00, Gas_Supply] - 1 Generator-p_nom[Gas_Supply]    ≤ -0.0
+		...
+[2026-04-30 20:00:00, Market_Sale]: +1 Generator-p[2026-04-30 20:00:00, Market_Sale] - 1 Generator-p_nom[Market_Sale] ≤ -0.0
+[2026-04-30 21:00:00, Gas_Supply]: +1 Generator-p[2026-04-30 21:00:00, Gas_Supply] - 1 Generator-p_nom[Gas_Supply]    ≤ -0.0
+[2026-04-30 21:00:00, Market_Sale]: +1 Generator-p[2026-04-30 21:00:00, Market_Sale] - 1 Generator-p_nom[Market_Sale] ≤ -0.0
+[2026-04-30 22:00:00, Gas_Supply]: +1 Generator-p[2026-04-30 22:00:00, Gas_Supply] - 1 Generator-p_nom[Gas_Supply]    ≤ -0.0
+[2026-04-30 22:00:00, Market_Sale]: +1 Generator-p[2026-04-30 22:00:00, Market_Sale] - 1 Generator-p_nom[Market_Sale] ≤ -0.0
+[2026-04-30 23:00:00, Gas_Supply]: +1 Generator-p[2026-04-30 23:00:00, Gas_Supply] - 1 Generator-p_nom[Gas_Supply]    ≤ -0.0
+[2026-04-30 23:00:00, Market_Sale]: +1 Generator-p[2026-04-30 23:00:00, Market_Sale] - 1 Generator-p_nom[Market_Sale] ≤ -0.0
+
+--- Link-fix-p-lower ---
+Constraint `Link-fix-p-lower` [snapshot: 720, name: 1]:
+-------------------------------------------------------
+[2026-04-01 00:00:00, Boiler]: +1 Link-p[2026-04-01 00:00:00, Boiler] ≥ -0.0
+[2026-04-01 01:00:00, Boiler]: +1 Link-p[2026-04-01 01:00:00, Boiler] ≥ -0.0
+[2026-04-01 02:00:00, Boiler]: +1 Link-p[2026-04-01 02:00:00, Boiler] ≥ -0.0
+[2026-04-01 03:00:00, Boiler]: +1 Link-p[2026-04-01 03:00:00, Boiler] ≥ -0.0
+[2026-04-01 04:00:00, Boiler]: +1 Link-p[2026-04-01 04:00:00, Boiler] ≥ -0.0
+[2026-04-01 05:00:00, Boiler]: +1 Link-p[2026-04-01 05:00:00, Boiler] ≥ -0.0
+[2026-04-01 06:00:00, Boiler]: +1 Link-p[2026-04-01 06:00:00, Boiler] ≥ -0.0
+		...
+[2026-04-30 17:00:00, Boiler]: +1 Link-p[2026-04-30 17:00:00, Boiler] ≥ -0.0
+[2026-04-30 18:00:00, Boiler]: +1 Link-p[2026-04-30 18:00:00, Boiler] ≥ -0.0
+[2026-04-30 19:00:00, Boiler]: +1 Link-p[2026-04-30 19:00:00, Boiler] ≥ -0.0
+[2026-04-30 20:00:00, Boiler]: +1 Link-p[2026-04-30 20:00:00, Boiler] ≥ -0.0
+[2026-04-30 21:00:00, Boiler]: +1 Link-p[2026-04-30 21:00:00, Boiler] ≥ -0.0
+[2026-04-30 22:00:00, Boiler]: +1 Link-p[2026-04-30 22:00:00, Boiler] ≥ -0.0
+[2026-04-30 23:00:00, Boiler]: +1 Link-p[2026-04-30 23:00:00, Boiler] ≥ -0.0
+
+--- Link-fix-p-upper ---
+Constraint `Link-fix-p-upper` [snapshot: 720, name: 1]:
+-------------------------------------------------------
+[2026-04-01 00:00:00, Boiler]: +1 Link-p[2026-04-01 00:00:00, Boiler] ≤ 19.13
+[2026-04-01 01:00:00, Boiler]: +1 Link-p[2026-04-01 01:00:00, Boiler] ≤ 19.13
+[2026-04-01 02:00:00, Boiler]: +1 Link-p[2026-04-01 02:00:00, Boiler] ≤ 19.13
+[2026-04-01 03:00:00, Boiler]: +1 Link-p[2026-04-01 03:00:00, Boiler] ≤ 19.13
+[2026-04-01 04:00:00, Boiler]: +1 Link-p[2026-04-01 04:00:00, Boiler] ≤ 19.13
+[2026-04-01 05:00:00, Boiler]: +1 Link-p[2026-04-01 05:00:00, Boiler] ≤ 19.13
+[2026-04-01 06:00:00, Boiler]: +1 Link-p[2026-04-01 06:00:00, Boiler] ≤ 19.13
+		...
+[2026-04-30 17:00:00, Boiler]: +1 Link-p[2026-04-30 17:00:00, Boiler] ≤ 19.13
+[2026-04-30 18:00:00, Boiler]: +1 Link-p[2026-04-30 18:00:00, Boiler] ≤ 19.13
+[2026-04-30 19:00:00, Boiler]: +1 Link-p[2026-04-30 19:00:00, Boiler] ≤ 19.13
+[2026-04-30 20:00:00, Boiler]: +1 Link-p[2026-04-30 20:00:00, Boiler] ≤ 19.13
+[2026-04-30 21:00:00, Boiler]: +1 Link-p[2026-04-30 21:00:00, Boiler] ≤ 19.13
+[2026-04-30 22:00:00, Boiler]: +1 Link-p[2026-04-30 22:00:00, Boiler] ≤ 19.13
+[2026-04-30 23:00:00, Boiler]: +1 Link-p[2026-04-30 23:00:00, Boiler] ≤ 19.13
+
+--- Link-com-p-lower ---
+Constraint `Link-com-p-lower` [snapshot: 720, name: 1]:
+-------------------------------------------------------
+[2026-04-01 00:00:00, CHP]: +1 Link-p[2026-04-01 00:00:00, CHP] - 1.405 Link-status[2026-04-01 00:00:00, CHP] ≥ -0.0
+[2026-04-01 01:00:00, CHP]: +1 Link-p[2026-04-01 01:00:00, CHP] - 1.405 Link-status[2026-04-01 01:00:00, CHP] ≥ -0.0
+[2026-04-01 02:00:00, CHP]: +1 Link-p[2026-04-01 02:00:00, CHP] - 1.405 Link-status[2026-04-01 02:00:00, CHP] ≥ -0.0
+[2026-04-01 03:00:00, CHP]: +1 Link-p[2026-04-01 03:00:00, CHP] - 1.405 Link-status[2026-04-01 03:00:00, CHP] ≥ -0.0
+[2026-04-01 04:00:00, CHP]: +1 Link-p[2026-04-01 04:00:00, CHP] - 1.405 Link-status[2026-04-01 04:00:00, CHP] ≥ -0.0
+[2026-04-01 05:00:00, CHP]: +1 Link-p[2026-04-01 05:00:00, CHP] - 1.405 Link-status[2026-04-01 05:00:00, CHP] ≥ -0.0
+[2026-04-01 06:00:00, CHP]: +1 Link-p[2026-04-01 06:00:00, CHP] - 1.405 Link-status[2026-04-01 06:00:00, CHP] ≥ -0.0
+		...
+[2026-04-30 17:00:00, CHP]: +1 Link-p[2026-04-30 17:00:00, CHP] - 1.405 Link-status[2026-04-30 17:00:00, CHP] ≥ -0.0
+[2026-04-30 18:00:00, CHP]: +1 Link-p[2026-04-30 18:00:00, CHP] - 1.405 Link-status[2026-04-30 18:00:00, CHP] ≥ -0.0
+[2026-04-30 19:00:00, CHP]: +1 Link-p[2026-04-30 19:00:00, CHP] - 1.405 Link-status[2026-04-30 19:00:00, CHP] ≥ -0.0
+[2026-04-30 20:00:00, CHP]: +1 Link-p[2026-04-30 20:00:00, CHP] - 1.405 Link-status[2026-04-30 20:00:00, CHP] ≥ -0.0
+[2026-04-30 21:00:00, CHP]: +1 Link-p[2026-04-30 21:00:00, CHP] - 1.405 Link-status[2026-04-30 21:00:00, CHP] ≥ -0.0
+[2026-04-30 22:00:00, CHP]: +1 Link-p[2026-04-30 22:00:00, CHP] - 1.405 Link-status[2026-04-30 22:00:00, CHP] ≥ -0.0
+[2026-04-30 23:00:00, CHP]: +1 Link-p[2026-04-30 23:00:00, CHP] - 1.405 Link-status[2026-04-30 23:00:00, CHP] ≥ -0.0
+
+--- Link-com-p-upper ---
+Constraint `Link-com-p-upper` [snapshot: 720, name: 1]:
+-------------------------------------------------------
+[2026-04-01 00:00:00, CHP]: +1 Link-p[2026-04-01 00:00:00, CHP] - 2.556 Link-status[2026-04-01 00:00:00, CHP] ≤ -0.0
+[2026-04-01 01:00:00, CHP]: +1 Link-p[2026-04-01 01:00:00, CHP] - 2.556 Link-status[2026-04-01 01:00:00, CHP] ≤ -0.0
+[2026-04-01 02:00:00, CHP]: +1 Link-p[2026-04-01 02:00:00, CHP] - 2.556 Link-status[2026-04-01 02:00:00, CHP] ≤ -0.0
+[2026-04-01 03:00:00, CHP]: +1 Link-p[2026-04-01 03:00:00, CHP] - 2.556 Link-status[2026-04-01 03:00:00, CHP] ≤ -0.0
+[2026-04-01 04:00:00, CHP]: +1 Link-p[2026-04-01 04:00:00, CHP] - 2.556 Link-status[2026-04-01 04:00:00, CHP] ≤ -0.0
+[2026-04-01 05:00:00, CHP]: +1 Link-p[2026-04-01 05:00:00, CHP] - 2.556 Link-status[2026-04-01 05:00:00, CHP] ≤ -0.0
+[2026-04-01 06:00:00, CHP]: +1 Link-p[2026-04-01 06:00:00, CHP] - 2.556 Link-status[2026-04-01 06:00:00, CHP] ≤ -0.0
+		...
+[2026-04-30 17:00:00, CHP]: +1 Link-p[2026-04-30 17:00:00, CHP] - 2.556 Link-status[2026-04-30 17:00:00, CHP] ≤ -0.0
+[2026-04-30 18:00:00, CHP]: +1 Link-p[2026-04-30 18:00:00, CHP] - 2.556 Link-status[2026-04-30 18:00:00, CHP] ≤ -0.0
+[2026-04-30 19:00:00, CHP]: +1 Link-p[2026-04-30 19:00:00, CHP] - 2.556 Link-status[2026-04-30 19:00:00, CHP] ≤ -0.0
+[2026-04-30 20:00:00, CHP]: +1 Link-p[2026-04-30 20:00:00, CHP] - 2.556 Link-status[2026-04-30 20:00:00, CHP] ≤ -0.0
+[2026-04-30 21:00:00, CHP]: +1 Link-p[2026-04-30 21:00:00, CHP] - 2.556 Link-status[2026-04-30 21:00:00, CHP] ≤ -0.0
+[2026-04-30 22:00:00, CHP]: +1 Link-p[2026-04-30 22:00:00, CHP] - 2.556 Link-status[2026-04-30 22:00:00, CHP] ≤ -0.0
+[2026-04-30 23:00:00, CHP]: +1 Link-p[2026-04-30 23:00:00, CHP] - 2.556 Link-status[2026-04-30 23:00:00, CHP] ≤ -0.0
+
+--- Link-com-transition-start-up ---
+Constraint `Link-com-transition-start-up` [snapshot: 720, name: 1]:
+-------------------------------------------------------------------
+[2026-04-01 00:00:00, CHP]: +1 Link-start_up[2026-04-01 00:00:00, CHP] - 1 Link-status[2026-04-01 00:00:00, CHP]                                           ≥ -1.0
+[2026-04-01 01:00:00, CHP]: +1 Link-start_up[2026-04-01 01:00:00, CHP] - 1 Link-status[2026-04-01 01:00:00, CHP] + 1 Link-status[2026-04-01 00:00:00, CHP] ≥ -0.0
+[2026-04-01 02:00:00, CHP]: +1 Link-start_up[2026-04-01 02:00:00, CHP] - 1 Link-status[2026-04-01 02:00:00, CHP] + 1 Link-status[2026-04-01 01:00:00, CHP] ≥ -0.0
+[2026-04-01 03:00:00, CHP]: +1 Link-start_up[2026-04-01 03:00:00, CHP] - 1 Link-status[2026-04-01 03:00:00, CHP] + 1 Link-status[2026-04-01 02:00:00, CHP] ≥ -0.0
+[2026-04-01 04:00:00, CHP]: +1 Link-start_up[2026-04-01 04:00:00, CHP] - 1 Link-status[2026-04-01 04:00:00, CHP] + 1 Link-status[2026-04-01 03:00:00, CHP] ≥ -0.0
+[2026-04-01 05:00:00, CHP]: +1 Link-start_up[2026-04-01 05:00:00, CHP] - 1 Link-status[2026-04-01 05:00:00, CHP] + 1 Link-status[2026-04-01 04:00:00, CHP] ≥ -0.0
+[2026-04-01 06:00:00, CHP]: +1 Link-start_up[2026-04-01 06:00:00, CHP] - 1 Link-status[2026-04-01 06:00:00, CHP] + 1 Link-status[2026-04-01 05:00:00, CHP] ≥ -0.0
+		...
+[2026-04-30 17:00:00, CHP]: +1 Link-start_up[2026-04-30 17:00:00, CHP] - 1 Link-status[2026-04-30 17:00:00, CHP] + 1 Link-status[2026-04-30 16:00:00, CHP] ≥ -0.0
+[2026-04-30 18:00:00, CHP]: +1 Link-start_up[2026-04-30 18:00:00, CHP] - 1 Link-status[2026-04-30 18:00:00, CHP] + 1 Link-status[2026-04-30 17:00:00, CHP] ≥ -0.0
+[2026-04-30 19:00:00, CHP]: +1 Link-start_up[2026-04-30 19:00:00, CHP] - 1 Link-status[2026-04-30 19:00:00, CHP] + 1 Link-status[2026-04-30 18:00:00, CHP] ≥ -0.0
+[2026-04-30 20:00:00, CHP]: +1 Link-start_up[2026-04-30 20:00:00, CHP] - 1 Link-status[2026-04-30 20:00:00, CHP] + 1 Link-status[2026-04-30 19:00:00, CHP] ≥ -0.0
+[2026-04-30 21:00:00, CHP]: +1 Link-start_up[2026-04-30 21:00:00, CHP] - 1 Link-status[2026-04-30 21:00:00, CHP] + 1 Link-status[2026-04-30 20:00:00, CHP] ≥ -0.0
+[2026-04-30 22:00:00, CHP]: +1 Link-start_up[2026-04-30 22:00:00, CHP] - 1 Link-status[2026-04-30 22:00:00, CHP] + 1 Link-status[2026-04-30 21:00:00, CHP] ≥ -0.0
+[2026-04-30 23:00:00, CHP]: +1 Link-start_up[2026-04-30 23:00:00, CHP] - 1 Link-status[2026-04-30 23:00:00, CHP] + 1 Link-status[2026-04-30 22:00:00, CHP] ≥ -0.0
+
+--- Link-com-transition-shut-down ---
+Constraint `Link-com-transition-shut-down` [snapshot: 720, name: 1]:
+--------------------------------------------------------------------
+[2026-04-01 00:00:00, CHP]: +1 Link-shut_down[2026-04-01 00:00:00, CHP] + 1 Link-status[2026-04-01 00:00:00, CHP]                                           ≥ 1.0
+[2026-04-01 01:00:00, CHP]: +1 Link-shut_down[2026-04-01 01:00:00, CHP] + 1 Link-status[2026-04-01 01:00:00, CHP] - 1 Link-status[2026-04-01 00:00:00, CHP] ≥ -0.0
+[2026-04-01 02:00:00, CHP]: +1 Link-shut_down[2026-04-01 02:00:00, CHP] + 1 Link-status[2026-04-01 02:00:00, CHP] - 1 Link-status[2026-04-01 01:00:00, CHP] ≥ -0.0
+[2026-04-01 03:00:00, CHP]: +1 Link-shut_down[2026-04-01 03:00:00, CHP] + 1 Link-status[2026-04-01 03:00:00, CHP] - 1 Link-status[2026-04-01 02:00:00, CHP] ≥ -0.0
+[2026-04-01 04:00:00, CHP]: +1 Link-shut_down[2026-04-01 04:00:00, CHP] + 1 Link-status[2026-04-01 04:00:00, CHP] - 1 Link-status[2026-04-01 03:00:00, CHP] ≥ -0.0
+[2026-04-01 05:00:00, CHP]: +1 Link-shut_down[2026-04-01 05:00:00, CHP] + 1 Link-status[2026-04-01 05:00:00, CHP] - 1 Link-status[2026-04-01 04:00:00, CHP] ≥ -0.0
+[2026-04-01 06:00:00, CHP]: +1 Link-shut_down[2026-04-01 06:00:00, CHP] + 1 Link-status[2026-04-01 06:00:00, CHP] - 1 Link-status[2026-04-01 05:00:00, CHP] ≥ -0.0
+		...
+[2026-04-30 17:00:00, CHP]: +1 Link-shut_down[2026-04-30 17:00:00, CHP] + 1 Link-status[2026-04-30 17:00:00, CHP] - 1 Link-status[2026-04-30 16:00:00, CHP] ≥ -0.0
+[2026-04-30 18:00:00, CHP]: +1 Link-shut_down[2026-04-30 18:00:00, CHP] + 1 Link-status[2026-04-30 18:00:00, CHP] - 1 Link-status[2026-04-30 17:00:00, CHP] ≥ -0.0
+[2026-04-30 19:00:00, CHP]: +1 Link-shut_down[2026-04-30 19:00:00, CHP] + 1 Link-status[2026-04-30 19:00:00, CHP] - 1 Link-status[2026-04-30 18:00:00, CHP] ≥ -0.0
+[2026-04-30 20:00:00, CHP]: +1 Link-shut_down[2026-04-30 20:00:00, CHP] + 1 Link-status[2026-04-30 20:00:00, CHP] - 1 Link-status[2026-04-30 19:00:00, CHP] ≥ -0.0
+[2026-04-30 21:00:00, CHP]: +1 Link-shut_down[2026-04-30 21:00:00, CHP] + 1 Link-status[2026-04-30 21:00:00, CHP] - 1 Link-status[2026-04-30 20:00:00, CHP] ≥ -0.0
+[2026-04-30 22:00:00, CHP]: +1 Link-shut_down[2026-04-30 22:00:00, CHP] + 1 Link-status[2026-04-30 22:00:00, CHP] - 1 Link-status[2026-04-30 21:00:00, CHP] ≥ -0.0
+[2026-04-30 23:00:00, CHP]: +1 Link-shut_down[2026-04-30 23:00:00, CHP] + 1 Link-status[2026-04-30 23:00:00, CHP] - 1 Link-status[2026-04-30 22:00:00, CHP] ≥ -0.0
+
+--- Link-com-status-min_up_time_must_stay_up ---
+Constraint `Link-com-status-min_up_time_must_stay_up` [snapshot: 720, name: 1] - 720 masked entries:
+----------------------------------------------------------------------------------------------------
+[2026-04-01 00:00:00, CHP]: None
+[2026-04-01 01:00:00, CHP]: None
+[2026-04-01 02:00:00, CHP]: None
+[2026-04-01 03:00:00, CHP]: None
+[2026-04-01 04:00:00, CHP]: None
+[2026-04-01 05:00:00, CHP]: None
+[2026-04-01 06:00:00, CHP]: None
+		...
+[2026-04-30 17:00:00, CHP]: None
+[2026-04-30 18:00:00, CHP]: None
+[2026-04-30 19:00:00, CHP]: None
+[2026-04-30 20:00:00, CHP]: None
+[2026-04-30 21:00:00, CHP]: None
+[2026-04-30 22:00:00, CHP]: None
+[2026-04-30 23:00:00, CHP]: None
+
+--- Bus-nodal_balance ---
+Constraint `Bus-nodal_balance` [name: 3, snapshot: 720]:
+--------------------------------------------------------
+[gas, 2026-04-01 00:00:00]: +1 Generator-p[2026-04-01 00:00:00, Gas_Supply] - 1 Link-p[2026-04-01 00:00:00, CHP] - 1 Link-p[2026-04-01 00:00:00, Boiler] = -0.0
+[gas, 2026-04-01 01:00:00]: +1 Generator-p[2026-04-01 01:00:00, Gas_Supply] - 1 Link-p[2026-04-01 01:00:00, CHP] - 1 Link-p[2026-04-01 01:00:00, Boiler] = -0.0
+[gas, 2026-04-01 02:00:00]: +1 Generator-p[2026-04-01 02:00:00, Gas_Supply] - 1 Link-p[2026-04-01 02:00:00, CHP] - 1 Link-p[2026-04-01 02:00:00, Boiler] = -0.0
+[gas, 2026-04-01 03:00:00]: +1 Generator-p[2026-04-01 03:00:00, Gas_Supply] - 1 Link-p[2026-04-01 03:00:00, CHP] - 1 Link-p[2026-04-01 03:00:00, Boiler] = -0.0
+[gas, 2026-04-01 04:00:00]: +1 Generator-p[2026-04-01 04:00:00, Gas_Supply] - 1 Link-p[2026-04-01 04:00:00, CHP] - 1 Link-p[2026-04-01 04:00:00, Boiler] = -0.0
+[gas, 2026-04-01 05:00:00]: +1 Generator-p[2026-04-01 05:00:00, Gas_Supply] - 1 Link-p[2026-04-01 05:00:00, CHP] - 1 Link-p[2026-04-01 05:00:00, Boiler] = -0.0
+[gas, 2026-04-01 06:00:00]: +1 Generator-p[2026-04-01 06:00:00, Gas_Supply] - 1 Link-p[2026-04-01 06:00:00, CHP] - 1 Link-p[2026-04-01 06:00:00, Boiler] = -0.0
+		...
+[heat, 2026-04-30 17:00:00]: +0.458 Link-p[2026-04-30 17:00:00, CHP] + 0.836 Link-p[2026-04-30 17:00:00, Boiler]                                         = 2.63
+[heat, 2026-04-30 18:00:00]: +0.458 Link-p[2026-04-30 18:00:00, CHP] + 0.836 Link-p[2026-04-30 18:00:00, Boiler]                                         = 2.9
+[heat, 2026-04-30 19:00:00]: +0.458 Link-p[2026-04-30 19:00:00, CHP] + 0.836 Link-p[2026-04-30 19:00:00, Boiler]                                         = 3.17
+[heat, 2026-04-30 20:00:00]: +0.458 Link-p[2026-04-30 20:00:00, CHP] + 0.836 Link-p[2026-04-30 20:00:00, Boiler]                                         = 3.42
+[heat, 2026-04-30 21:00:00]: +0.458 Link-p[2026-04-30 21:00:00, CHP] + 0.836 Link-p[2026-04-30 21:00:00, Boiler]                                         = 3.5
+[heat, 2026-04-30 22:00:00]: +0.458 Link-p[2026-04-30 22:00:00, CHP] + 0.836 Link-p[2026-04-30 22:00:00, Boiler]                                         = 3.01
+[heat, 2026-04-30 23:00:00]: +0.458 Link-p[2026-04-30 23:00:00, CHP] + 0.836 Link-p[2026-04-30 23:00:00, Boiler]                                         = 2.53
+
+--- CHP_gas_geq_Boiler_gas ---
+Constraint `CHP_gas_geq_Boiler_gas` [snapshot: 720]:
+----------------------------------------------------
+[2026-04-01 00:00:00]: +1 Link-p[2026-04-01 00:00:00, CHP] - 1 Link-p[2026-04-01 00:00:00, Boiler] ≥ -0.0
+[2026-04-01 01:00:00]: +1 Link-p[2026-04-01 01:00:00, CHP] - 1 Link-p[2026-04-01 01:00:00, Boiler] ≥ -0.0
+[2026-04-01 02:00:00]: +1 Link-p[2026-04-01 02:00:00, CHP] - 1 Link-p[2026-04-01 02:00:00, Boiler] ≥ -0.0
+[2026-04-01 03:00:00]: +1 Link-p[2026-04-01 03:00:00, CHP] - 1 Link-p[2026-04-01 03:00:00, Boiler] ≥ -0.0
+[2026-04-01 04:00:00]: +1 Link-p[2026-04-01 04:00:00, CHP] - 1 Link-p[2026-04-01 04:00:00, Boiler] ≥ -0.0
+[2026-04-01 05:00:00]: +1 Link-p[2026-04-01 05:00:00, CHP] - 1 Link-p[2026-04-01 05:00:00, Boiler] ≥ -0.0
+[2026-04-01 06:00:00]: +1 Link-p[2026-04-01 06:00:00, CHP] - 1 Link-p[2026-04-01 06:00:00, Boiler] ≥ -0.0
+		...
+[2026-04-30 17:00:00]: +1 Link-p[2026-04-30 17:00:00, CHP] - 1 Link-p[2026-04-30 17:00:00, Boiler] ≥ -0.0
+[2026-04-30 18:00:00]: +1 Link-p[2026-04-30 18:00:00, CHP] - 1 Link-p[2026-04-30 18:00:00, Boiler] ≥ -0.0
+[2026-04-30 19:00:00]: +1 Link-p[2026-04-30 19:00:00, CHP] - 1 Link-p[2026-04-30 19:00:00, Boiler] ≥ -0.0
+[2026-04-30 20:00:00]: +1 Link-p[2026-04-30 20:00:00, CHP] - 1 Link-p[2026-04-30 20:00:00, Boiler] ≥ -0.0
+[2026-04-30 21:00:00]: +1 Link-p[2026-04-30 21:00:00, CHP] - 1 Link-p[2026-04-30 21:00:00, Boiler] ≥ -0.0
+[2026-04-30 22:00:00]: +1 Link-p[2026-04-30 22:00:00, CHP] - 1 Link-p[2026-04-30 22:00:00, Boiler] ≥ -0.0
+[2026-04-30 23:00:00]: +1 Link-p[2026-04-30 23:00:00, CHP] - 1 Link-p[2026-04-30 23:00:00, Boiler] ≥ -0.0
+
+END OF MODEL

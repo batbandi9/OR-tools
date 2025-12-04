@@ -24,7 +24,8 @@ def process_energy_data(cfg):
             dayfirst=True,
         )
         # Drop duplicates and sort
-        df = df.drop_duplicates(subset="datetime").set_index("datetime").sort_index()
+        df = df.drop_duplicates(subset="datetime").set_index(
+            "datetime").sort_index()
         # Resample to hourly to ensure grid is perfect (fills missing hours with NaN for now)
         df = df.resample("h").asfreq()
         print(df.head())
@@ -45,7 +46,8 @@ def process_energy_data(cfg):
         parse_dates=["datetime"],
     )
     waerme = (
-        waerme.drop_duplicates(subset="datetime").set_index("datetime").sort_index()
+        waerme.drop_duplicates(subset="datetime").set_index(
+            "datetime").sort_index()
     )
     waerme = waerme.resample("h").asfreq()  # Ensure hourly grid
     print(waerme.head())
@@ -57,7 +59,8 @@ def process_energy_data(cfg):
     dataset_1y = pd.concat([strom_1y, gas_1y, waerme], axis=1)
 
     # Basic cleanup for the 1-year set
-    dataset_1y = dataset_1y.ffill().bfill()  # Fill small gaps if any existed in prices
+    # Fill small gaps if any existed in prices
+    dataset_1y = dataset_1y.ffill().bfill()
 
     # Save
     dataset_1y.to_csv("data/interim/data_1year_strict.csv", index=True)
